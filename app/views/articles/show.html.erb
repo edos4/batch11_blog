@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @article.name %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<br>
+Manual: 
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td><%= comment.body %></td>
+        <td><%= link_to "Edit", edit_article_comment_path(@article.id, comment) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+Partial:
+<%= render 'comments/index', comments: @comments %>
